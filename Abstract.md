@@ -8,55 +8,59 @@ We have attempted to break down and give an outline for each function of the cod
 
 ## Classes and Functions Overview
 
+---
+
 ### 1. **TaskManagerException (Custom Exception)**
-   - A custom exception class designed to handle errors related to task management.
+   - A custom exception class to handle errors related to task management.
    - Inherits from the `Exception` class.
-   - Provides meaningful error messages when the application encounters task-related issues, such as adding a task beyond the maximum limit or accessing invalid task indices.
+   - Manages errors like exceeding the task limit or trying to modify tasks that don't exist.
 
 ### 2. **TaskManagerBase (Abstract Class)**
-   - Serves as the base class for managing tasks, implementing the core task management functionality.
-   - Contains an array of tasks (`Task[] tasks`), and tracks the number of tasks (`taskCount`).
-   - Defines abstract methods `addTask()`, `removeTask()`, and `markTaskCompleted()` that concrete subclasses must implement.
-   - Enforces the maximum limit of tasks (`maxTasks = 100`).
+   - Acts as the base class for managing tasks and implements core functionality.
+   - Stores tasks in an array(`Task[]`) and tracks the total number of tasks with an integer counter(`int`).
+   - Contains abstract methods:
+     - **`addTask(String)`**: Adds a task with a its name.
+     - **`removeTask(int)`**: Removes a task by its index.
+     - **`markTaskCompleted(int)`**: Marks a task as completed by its index.
+   - Limits the number of tasks using a fixed integer (`final int`).
 
 ### 3. **Task (Class)**
-   - Represents a to-do task, encapsulating task details and status.
+   - Represents a single task with a name and completion status.
    - Attributes:
-     - `taskName`: Stores the task's name.
-     - `completed`: Boolean flag indicating if the task is completed.
+     - **`String taskName`**: Stores the name of the task.
+     - **`boolean completed`**: Tracks whether the task is completed.
    - Methods:
-     - `markCompleted()`: Marks the task as completed.
-     - `toString()`: Returns a formatted string with the task's name and status for easy display in the list.
+     - **`markCompleted()`**: Marks the task as completed.
+     - **`toString()`**: Returns a formatted `String` with the task name and status.
 
 ### 4. **TaskManager (Concrete Class)**
-   - Extends `TaskManagerBase` and implements the abstract methods for managing tasks:
-     - `addTask()`: Adds a new task to the list.
-     - `removeTask()`: Removes a task by its index.
-     - `markTaskCompleted()`: Marks a task as completed.
-   - Ensures proper validation of task limits and indices using exception handling (`TaskManagerException`).
+   - Extends `TaskManagerBase` and implements the task management methods:
+     - **`addTask(String)`**: Adds a task to the array.
+     - **`removeTask(int)`**: Removes a task by its index.
+     - **`markTaskCompleted(int)`**: Marks a task as completed by its index.
+   - Validates task limits and indices, throwing `TaskManagerException` where appropriate.
 
 ### 5. **ToDoListApp (Main Application Class)**
-   - Implements the `Application` class from JavaFX to create a graphical user interface for the task manager.
-   - Main Components:
-     - `Label`, `TextField`, `Button`: Standard JavaFX UI components for user interaction.
-     - `ListView<String>`: Displays the list of tasks.
-   - Allows users to:
-     - Add tasks using a text input field.
-     - Remove selected tasks from the list.
+   - Extends the JavaFX `Application` class to create the graphical user interface (GUI) for managing tasks.
+   - Key Components:
+     - **`Label`**, **`TextField`**, **`Button`**: JavaFX UI elements for user interaction.
+     - **`ListView<String>`**: Displays the list of tasks.
+   - Users can:
+     - Add tasks via a text input (`String`).
+     - Remove tasks by selecting their index (`int`).
      - Mark tasks as completed.
-   - Utilizes a background thread (`TaskListRefresher`) to periodically refresh the task list, demonstrating multithreading.
+   - A background thread (`TaskListRefresher`) periodically updates the task list.
 
 ### 6. **TaskListRefresher (Runnable Class)**
    - A background thread that automatically refreshes the task list every 2 seconds.
-   - Updates the UI through `Platform.runLater()`, ensuring that the task list is always up-to-date.
-   
+   - Uses `Platform.runLater()` to update the UI from the background without blocking the main thread.
+
 ### 7. **Exception Handling**
-   - Handles all task-related exceptions, such as adding more tasks than allowed or removing tasks with invalid indices, ensuring robust error handling.
-   - Displays errors using JavaFX's `Alert` dialog to inform the user of issues.
+   - Manages errors like exceeding the maximum number of tasks or accessing invalid task indices.
+   - Uses JavaFX `Alert` dialogs to show error messages (`String`) to the user.
 
 ### 8. **Multithreading**
-   - Demonstrates multithreading by running the task list refresher in a separate thread. This background process enhances user experience by keeping the task list synchronized without manual refresh.
-
+   - Demonstrates multithreading with the `TaskListRefresher` running in a separate thread (`Thread`) to continuously update the task list without disrupting the main application flow.
 ---
 
 ## Team Members
@@ -69,7 +73,7 @@ We have attempted to break down and give an outline for each function of the cod
 ## Conclusion
 ---
 
-This To-Do List application demonstrates key software development principles like object-oriented programming (OOP), exception handling, and multithreading. With its easy-to-use interface and functional features, it not only addresses task management in the practical world.
+This To-Do List application demonstrates key software development principles like object-oriented programming (OOP), exception handling, and multithreading. With its easy-to-use interface and features, it attempts to address task management in the practical world.
 
-We encourage you to explore the application as a reflection of our understanding and implementation of JavaFX and essential programming practices. It implements everything we have been taught and more.
+We encourage you to explore the application as a reflection of our understanding and implementation of JavaFX and essential programming practices.
 
