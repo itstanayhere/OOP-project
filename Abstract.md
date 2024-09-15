@@ -1,6 +1,6 @@
 # To-Do List Application
 
-## Abstract (I can edit this yayyyy)
+## Abstract
 
 This project implements a fully functioning To-Do List application using JavaFX for the graphical user interface (GUI). It integrates fundamental object-oriented programming (OOP) concepts, such as encapsulation, inheritance, and abstraction, along with exception handling and multithreading. The application allows users to add, remove, and mark tasks as completed, with a user-friendly interface. The project demonstrates a structured and scalable approach to task management.
 
