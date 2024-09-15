@@ -2,9 +2,11 @@
 
 ## Abstract
 
-This project implements a fully functioning To-Do List application using JavaFX for the graphical user interface (GUI). It integrates fundamental object-oriented programming (OOP) concepts, such as encapsulation, inheritance, and abstraction, along with exception handling and multithreading. The application allows users to add, remove, and mark tasks as completed, with a user-friendly interface. The project demonstrates a structured and scalable approach to task management.
+This project implements a fully functioning To-Do List application using JavaFX for the graphical user interface (GUI). It integrates fundamental object-oriented programming (OOP) concepts, such as encapsulation, inheritance, and abstraction, along with exception handling and multithreading. The application allows users to add, remove, and mark tasks as completed, with a user-friendly interface. This project mimics a real world task-management system.
 
-## Components Overview
+We have attempted to break down and give an outline for each function of the code we want to upload, should our abstract be accepted.
+
+## Classes and Functions Overview
 
 ### 1. **TaskManagerException (Custom Exception)**
    - A custom exception class designed to handle errors related to task management.
@@ -65,6 +67,9 @@ This project implements a fully functioning To-Do List application using JavaFX 
 ---
 
 ## Conclusion
+---
 
-This To-Do List application effectively demonstrates key software development principles, such as OOP, exception handling, and multithreading. With its intuitive user interface and robust functionality, it offers a practical solution for managing tasks and serves as an educational example of building scalable JavaFX applications.
+This To-Do List application demonstrates key software development principles like object-oriented programming (OOP), exception handling, and multithreading. With its easy-to-use interface and functional features, it not only addresses task management in the practical world.
+
+We encourage you to explore the application as a reflection of our understanding and implementation of JavaFX and essential programming practices. It implements everything we have been taught and more.
 
