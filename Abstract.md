@@ -11,56 +11,37 @@ We have attempted to break down and give an outline for each function of the cod
 ---
 
 ### 1. **TaskManagerException (Custom Exception)**
-   - A custom exception class to handle errors related to task management.
-   - Inherits from the `Exception` class.
-   - Manages errors like exceeding the task limit or trying to modify tasks that don't exist.
+   - A custom-built error handler that manages issues related to task management.
+   - It identifies and alerts when certain task-related actions cannot be performed, such as adding too many tasks or trying to change tasks that aren't valid.
 
 ### 2. **TaskManagerBase (Abstract Class)**
-   - Acts as the base class for managing tasks and implements core functionality.
-   - Stores tasks in an array(`Task[]`) and tracks the total number of tasks with an integer counter(`int`).
-   - Contains abstract methods:
-     - **`addTask(String)`**: Adds a task with a its name.
-     - **`removeTask(int)`**: Removes a task by its index.
-     - **`markTaskCompleted(int)`**: Marks a task as completed by its index.
-   - Limits the number of tasks using a fixed integer (`final int`).
+   - The main structure for handling the tasks.
+   - It stores all tasks, keeps track of how many tasks exist, and provides the essential functions to add, remove, or mark tasks as completed.
+   - Sets a limit to how many tasks can be handled.
 
 ### 3. **Task (Class)**
-   - Represents a single task with a name and completion status.
-   - Attributes:
-     - **`String taskName`**: Stores the name of the task.
-     - **`boolean completed`**: Tracks whether the task is completed.
-   - Methods:
-     - **`markCompleted()`**: Marks the task as completed.
-     - **`toString()`**: Returns a formatted `String` with the task name and status.
+   - Represents a single task and keeps track of the task's name and whether it has been completed.
+   - Allows marking tasks as completed and offers a way to display each task with its current status.
 
 ### 4. **TaskManager (Concrete Class)**
-   - Extends `TaskManagerBase` and implements the task management methods:
-     - **`addTask(String)`**: Adds a task to the array.
-     - **`removeTask(int)`**: Removes a task by its index.
-     - **`markTaskCompleted(int)`**: Marks a task as completed by its index.
-   - Validates task limits and indices, throwing `TaskManagerException` where appropriate.
+   - This class puts the task management functions into action.
+   - It adds new tasks, removes tasks, and marks tasks as done.
+   - Makes sure the number of tasks stays within limits and that each task exists before trying to update or remove it.
 
 ### 5. **ToDoListApp (Main Application Class)**
-   - Extends the JavaFX `Application` class to create the graphical user interface (GUI) for managing tasks.
-   - Key Components:
-     - **`Label`**, **`TextField`**, **`Button`**: JavaFX UI elements for user interaction.
-     - **`ListView<String>`**: Displays the list of tasks.
-   - Users can:
-     - Add tasks via a text input (`String`).
-     - Remove tasks by selecting their index (`int`).
-     - Mark tasks as completed.
-   - A background thread (`TaskListRefresher`) periodically updates the task list.
+   - This is the main program that displays the to-do list and handles user input.
+   - Users can add tasks, remove tasks, and mark them as completed using a simple interface.
+   - The task list updates regularly to show the current tasks.
 
 ### 6. **TaskListRefresher (Runnable Class)**
-   - A background thread that automatically refreshes the task list every 2 seconds.
-   - Uses `Platform.runLater()` to update the UI from the background without blocking the main thread.
+   - Runs in the background and automatically refreshes the task list every few seconds, ensuring the user interface stays up-to-date.
 
 ### 7. **Exception Handling**
-   - Manages errors like exceeding the maximum number of tasks or accessing invalid task indices.
-   - Uses JavaFX `Alert` dialogs to show error messages (`String`) to the user.
+   - Catches and deals with common errors, such as trying to add more tasks than allowed or removing tasks that don’t exist, ensuring smooth user experience.
 
 ### 8. **Multithreading**
-   - Demonstrates multithreading with the `TaskListRefresher` running in a separate thread (`Thread`) to continuously update the task list without disrupting the main application flow.
+   - Uses a background process to keep the task list refreshed without interfering with other parts of the program, enhancing the overall usability.
+
 ---
 
 ## Team Members
